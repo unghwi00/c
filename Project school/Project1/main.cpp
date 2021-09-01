@@ -8,7 +8,7 @@ public:
 	static int top;
 	static string line[100];
 
-	static void add(string str);//¿Ö ¾ÈµÊ
+	static void add(string str);//gld
 	static void print();
 };
 string Board::line[] = { "", };
