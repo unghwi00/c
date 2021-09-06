@@ -5,8 +5,7 @@
 using namespace std;
 //Game클래스 선언
 
-class Game
-{
+class Game {
 private:
 	double energy = 100;
 	static int life;
@@ -15,46 +14,46 @@ public:
 	Game();
 	double Damage();
 	static void Die();
-	double Heal();
 };
 int Game::life = 10;
 
-void Game::Die()
-{
+void Game::Die() {
 	life--;
 	cout << "**생명이 1 감소하여 " << life << "이 되었습니다." << endl << endl;
 
-	cout << "당신의 남은 생명은 " << life << "입니다." << endl;
-	if (life > 0) 
-		std::cout << "당신은 살아남았습니다.\n"; 
-	else 
-		std::cout << "당신은 숨졌습니다.\n";
 }
-
-double Game::Heal()
-{
-	double Heal = 0;
-
-	if (energy < 10)
-	{
-		Heal += rand() % 5000;
-		energy += Heal;
-	}
-	cout << "체력을 회복 했습니다. 남은 체력은" << energy << " 입니다." << endl;
-	return energy;
-}
-
-double Game::Damage()
-{
+double Game::Damage() {
+	srand((unsigned)time(NULL));
+	int r rand()%6+1;
 	double damaged = 0;
 
-	if (energy > 0)
+	switch (r)
 	{
+	case 1:
+		damaged = 10;
+		break;
+	case 2:
+		damaged = 20;
+		break;
+	case 3:
+		damaged = 30;
+		break;
+	case 4:
+		damaged = 40;
+			break;
+	case 5:
+		damaged = 50;
+		break;
+	case 6:
+		damaged = 100;
+		break;
+	}
+
+	if (energy > 0) {
 		damaged += rand() % 100;
-		energy -= damaged;
+		/ energy -= damaged;
 		cout << "에너지가 " << damaged << " 감소하여 " << energy << " 이 되었습니다.\n";
-		if (energy < 0)
-		{
+		if (energy < 0) {
 			life--;
 			energy = 100;
 			cout << "생명이 1 감소하여 " << life << "이 되었습니다." << endl << endl;
@@ -66,13 +65,13 @@ double Game::Damage()
 //Game클래스 멤버 함수의 정의
 Game::Game()
 {
-	cout << "당신의 에너지는 " << energy << " 이며, 생명은 " << life << "입니다.\n";
+	cout << "에너지가 " << energy << " 이며, 생명이 " << life << "인 캐릭터가 만들어졌습니다.\n";
 	Damage();
 	Damage();
 	Damage();
-	Heal();
 	Damage();
 	Damage();
+
 }
 
 int main()
