@@ -22,6 +22,8 @@ void Game::Die() {
 	cout << "**생명이 1 감소하여 " << life << "이 되었습니다." << endl << endl; 
 
 }
+
+void ::Heal
 double Game::Damage() {
 	double damaged = 0;
 
